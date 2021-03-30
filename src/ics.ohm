@@ -1,0 +1,25 @@
+ICS {
+  Table = "BEGIN:VCALENDAR" statement* Block* "END:VCALENDAR" 
+
+  Block = Event | Timezone 
+
+  Event = "BEGIN:VEVENT" statement+ "END:VEVENT"
+
+  Timezone = "BEGIN:VTIMEZONE" statement+ (Standard | Daylight)+ "END:VTIMEZONE"
+
+  Daylight = "BEGIN:DAYLIGHT" statement+ "END:DAYLIGHT"
+
+  Standard = "BEGIN:STANDARD" statement+ "END:STANDARD"
+
+  statement = key property* ":" value?
+
+  property = ";" upper+ "=" (~":" any)+
+
+  key = ~reserveKeywords (upper | "-")+
+
+  reserveKeywords
+    = "BEGIN" 
+    | "END"
+
+  value = (~("\n"|"\r") any)+
+}
