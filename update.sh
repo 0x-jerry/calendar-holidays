@@ -1,0 +1,1 @@
+curl https://calendar.google.com/calendar/ical/zh.china%23holiday%40group.v.calendar.google.com/public/basic.ics > holidays-in-china.ics

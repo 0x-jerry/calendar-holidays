@@ -114,6 +114,8 @@ async function getAPIResult(): Promise<calendar_v3.Schema$Events> {
         calendarId: 'zh.china#holiday@group.v.calendar.google.com',
     });
 
+
+    await fs.mkdir(path.parse(cachePath).dir)
     await fs.writeFile(cachePath, JSON.stringify(data, null, 2));
 
     return data;
