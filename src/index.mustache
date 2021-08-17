@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calender</title>
+    <style>
+      .calender {
+        position: relative;
+        width: 700px;
+        font-family: monospace;
+        margin: 50px auto;
+      }
+
+      .title {
+        font-size: 50px;
+        font-weight: 400;
+      }
+
+      .today {
+        display: flex;
+        justify-content: flex-end;
+        font-size: 25px;
+        font-weight: 400;
+        padding: 5px 0;
+      }
+
+      .code {
+        min-height: 300px;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      .describe {
+        color: #888;
+        font-size: 14px;
+        line-height: 1.8em;
+      }
+
+      .week {
+        margin-top: 25px;
+        display: flex;
+      }
+
+      .day {
+        flex: 1;
+        text-align: center;
+      }
+
+      .day {
+        border: 1px dotted gray;
+      }
+
+      .day + .day {
+        border-left: 0;
+      }
+
+      .weekday,
+      .date,
+      .holiday {
+        margin: 15px 0;
+      }
+
+      .weekday {
+        font-size: 20px;
+        font-weight: 400;
+      }
+
+      .red {
+        color: rgb(194, 30, 30);
+      }
+    </style>
+    <link rel="stylesheet" href="./prism.css">
+    <link rel="stylesheet" href="./prism-theme.css">
+  </head>
+  <body>
+    <div class="calender">
+      <div class="title">{{language}}</div>
+      <div class="today">{{today}}</div>
+      <div class="today">{{cWeek}} &nbsp; <span>{{cDay}}</span></div>
+
+      <div class="code">
+        {{code}}
+      </div>
+
+      <div class="describe">
+        {{describe}}
+      </div>
+      <div class="week">
+        {{weekHtml}}
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,5 +1,8 @@
 {
-    "compilerOptions": {
-        "esModuleInterop": true
-    }
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "allowJs": true,
+    "outDir": "dist",
+    "resolveJsonModule": true
+  }
 }
