@@ -28,7 +28,7 @@ jobs:
           key: ${{ runner.os }}-node${{ matrix.node }}-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - name: Install pnpm
-        run: curl -f https://get.pnpm.io/v6.14.js | node - add --global pnpm@6
+        run: curl -f https://get.pnpm.io/v6.14.js | node - add --global pnpm
 
       - run: pnpm i
       - run: pnpm run build
@@ -36,5 +36,6 @@ jobs:
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3.9.0
         with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
           force_orphan: true
