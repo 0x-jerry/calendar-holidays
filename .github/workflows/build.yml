@@ -4,33 +4,37 @@ on:
   push:
     branches:
       - main
-  pull_request:
 
 jobs:
   deploy:
-    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        os: ['ubuntu-20.04']
+        node: [16]
+
+    runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - name: Setup Node
-        uses: actions/setup-node@v2
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v3
         with:
-          node-version: "14"
+          node-version: ${{ matrix.node }}
 
-      - name: Cache dependencies
-        uses: actions/cache@v2
+      - name: Cache .pnpm-store
+        uses: actions/cache@v3
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-node${{ matrix.node }}-${{ hashFiles('**/pnpm-lock.yaml') }}
 
-      - run: yarn --frozen-lockfile
-      - run: yarn build
+      - name: Install pnpm
+        run: curl -f https://get.pnpm.io/v6.14.js | node - add --global pnpm@6
+
+      - run: pnpm i
+      - run: pnpm run build
 
       - name: deploy
-        uses: peaceiris/actions-gh-pages@v3.7.3
+        uses: peaceiris/actions-gh-pages@v3.9.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
           force_orphan: true
