@@ -4,19 +4,19 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "generate": "ts-node ./scripts/generateData.ts",
-    "build": "ts-node ./src/main.ts"
+    "generate": "tsx ./scripts/generateData.ts",
+    "build": "tsx ./src/main.ts"
   },
   "devDependencies": {
-    "@types/mustache": "^4.1.2",
-    "@types/node": "^16.6.1",
-    "@types/prismjs": "^1.16.6",
+    "@types/mustache": "^4.2.2",
+    "@types/node": "^18.11.18",
+    "@types/prismjs": "^1.26.0",
     "mustache": "^4.2.0",
-    "prismjs": "^1.24.1",
-    "ts-node": "^10.2.0",
-    "typescript": "^4.3.5"
+    "prismjs": "^1.29.0",
+    "tsx": "^3.12.1",
+    "typescript": "^4.9.4"
   },
   "dependencies": {
-    "dayjs": "^1.10.6"
+    "dayjs": "^1.11.7"
   }
 }

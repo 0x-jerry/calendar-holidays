@@ -57,6 +57,10 @@ export function getWeekInfo(): CalendarData {
     const day = start.add(idx, "d");
     const i = dateData[day.format("YYYY-MM-DD")];
 
+    if (!i) {
+      continue
+    }
+
     info.week.push({
       date: day.format("MM-DD"),
       cMonth: i.cMonth,
